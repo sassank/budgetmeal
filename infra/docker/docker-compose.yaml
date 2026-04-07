@@ -3,12 +3,13 @@
 services:
   db:
     image: postgres:15 # image officielle de PostgreSQL version 15 depuis Docker Hub
+    restart: always # redémarre le conteneur en cas de plantage ou redémarrage du système
     environment: # variables d'environnement pour configurer PostgreSQL
-      POSTGRES_USER: budgetmeal # nom d'utilisateur pour la base de données
-      POSTGRES_PASSWORD: budgetmeal # mot de passe pour l'utilisateur
+      POSTGRES_USER: postgres # nom d'utilisateur pour la base de données
+      POSTGRES_PASSWORD: postgres # mot de passe pour l'utilisateur
       POSTGRES_DB: budgetmeal # nom de la base de données à créer
     ports:
-      - "5432:5432" # port_pc:port_conteneur pour accéder à PostgreSQL depuis l'extérieur du conteneur
+      - "5433:5432" # port_pc:port_conteneur pour accéder à PostgreSQL depuis l'extérieur du conteneur
     volumes:
       - postgres_data:/var/lib/postgresql/data # Docker sauvegarde les données dans un volume nommé postgres_data
 
